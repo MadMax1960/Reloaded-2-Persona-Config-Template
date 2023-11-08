@@ -1,0 +1,21 @@
+{
+  "ModId": "NaoSmiley",
+  "ModName": "NaoSmiley",
+  "ModAuthor": "A Mudkip",
+  "ModVersion": "1.0.0",
+  "ModDescription": "NaoSmiley",
+  "ModDll": "NaoSmiley.dll",
+  "ModIcon": "Preview.png",
+  "ModR2RManagedDll32": "x86/NaoSmiley.dll",
+  "ModR2RManagedDll64": "x64/NaoSmiley.dll",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "NaoSmiley.ReleaseMetadata.json",
+  "PluginData": {},
+  "IsUniversalMod": false,
+  "ModDependencies": [ "reloaded.sharedlib.hooks" ],
+  "OptionalDependencies": [],
+  "SupportedAppId": [],
+  "ProjectUrl": ""
+}
