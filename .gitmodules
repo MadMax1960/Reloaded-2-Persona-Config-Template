@@ -1,0 +1,3 @@
+[submodule "Interfaces/FileEmulationFramework"]
+	path = Interfaces/FileEmulationFramework
+	url = https://github.com/Sewer56/FileEmulationFramework

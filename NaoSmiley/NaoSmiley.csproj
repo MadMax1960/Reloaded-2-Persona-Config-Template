@@ -49,7 +49,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Interfaces\CriFs.V2.Hook.Interfaces\Interfaces\CriFs.V2.Hook.Interfaces\CriFs.V2.Hook.Interfaces.csproj" />
-    <ProjectReference Include="..\Interfaces\FileEmulationFramework-main\Emulator\Interfaces\PAK.Stream.Emulator.Interfaces\PAK.Stream.Emulator.Interfaces.csproj" />
+    <ProjectReference Include="..\Interfaces\FileEmulationFramework\Emulator\Interfaces\PAK.Stream.Emulator.Interfaces\PAK.Stream.Emulator.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
