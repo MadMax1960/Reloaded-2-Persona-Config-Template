@@ -31,7 +31,7 @@ namespace NaoSmiley.Configuration
 		[DisplayName("Test")]
 		[Description("Disable if you like breaking things!")]
 		[DefaultValue(true)]
-		public bool Test1 { get; set; } = true;
+		public bool Test1 { get; set; } = true; // bool used in Mod.CS, not the folder name, but the bool name
 
 	}
 

@@ -7,6 +7,8 @@ using CriFs.V2.Hook.Interfaces;
 using PAK.Stream.Emulator;
 using PAK.Stream.Emulator.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
+using SPD.File.Emulator.Interfaces;
+using SPD.File.Emulator;
 
 namespace NaoSmiley
 {
@@ -54,40 +56,52 @@ namespace NaoSmiley
 			_owner = context.Owner;
 			_configuration = context.Configuration;
 			_modConfig = context.ModConfig;
-	
-	
+
+			var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId); // modDir variable for file emulation
+
 			// For more information about this template, please see
 			// https://reloaded-project.github.io/Reloaded-II/ModTemplate/
-	
+
 			// If you want to implement e.g. unload support in your mod,
 			// and some other neat features, override the methods in ModBase.
-	
+
 			// TODO: Implement some mod logic
-	
-			var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
-			if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
+
+			var criFsController = _modLoader.GetController<ICriFsRedirectorApi>(); // grab emu
+			if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi)) // idr LMAO
 			{
 				_logger.WriteLine($"Something shit it's pants", System.Drawing.Color.Red);
 				return;
 			}
 	
-			if (_configuration.Test1)
+			if (_configuration.Test1) // should be _configuration.(boolname)
 			{
-				criFsApi.AddProbingPath("Test");
+				criFsApi.AddProbingPath("Test"); // folder name
 			}
 	
-			var PakEmulatorController = _modLoader.GetController<IPakEmulator>();
-			if (PakEmulatorController == null || !PakEmulatorController.TryGetTarget(out var _PakEmulator))
+			var PakEmulatorController = _modLoader.GetController<IPakEmulator>(); // grab emu
+			if (PakEmulatorController == null || !PakEmulatorController.TryGetTarget(out var _PakEmulator)) // idr
 			{
 				_logger.WriteLine($"Something in pak emu shit it's pants", System.Drawing.Color.Red);
 				return;
 			}
 	
-			var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
-	
-			if (_configuration.Test1)
+			if (_configuration.Test1) // should be _configuration.(boolname)
 			{
-				_PakEmulator.AddDirectory(Path.Combine(modDir, "Test"));
+				_PakEmulator.AddDirectory(Path.Combine(modDir, "Test")); // folder name
+			}
+
+			var SPDEmulatorController = _modLoader.GetController<ISpdEmulator>(); // grab emu
+			if (SPDEmulatorController == null || !SPDEmulatorController.TryGetTarget(out var _SPDEmulator)) // idr
+			{
+				_logger.WriteLine($"Something in spd emu shit it's pants", System.Drawing.Color.Red);
+				return;
+			}
+
+
+			if (_configuration.Test1) // should be _configuration.(boolname)
+			{
+				_PakEmulator.AddDirectory(Path.Combine(modDir, "Test")); // folder name 
 			}
 		}
 	

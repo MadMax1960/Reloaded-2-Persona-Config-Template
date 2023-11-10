@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAK.Stream.Emulator.Interfa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriFs.V2.Hook.Interfaces", "Interfaces\CriFs.V2.Hook.ReloadedII\Interfaces\CriFs.V2.Hook.Interfaces\CriFs.V2.Hook.Interfaces.csproj", "{3FD83D1F-3089-44D3-B6A6-4B63800D89C7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPD.File.Emulator.Interfaces", "Interfaces\FileEmulationFramework\Emulator\Interfaces\SPD.File.Emulator.Interfaces\SPD.File.Emulator.Interfaces.csproj", "{92DBDBAE-3D2E-4789-AB47-CA6C2DEBE5BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{3FD83D1F-3089-44D3-B6A6-4B63800D89C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FD83D1F-3089-44D3-B6A6-4B63800D89C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FD83D1F-3089-44D3-B6A6-4B63800D89C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92DBDBAE-3D2E-4789-AB47-CA6C2DEBE5BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92DBDBAE-3D2E-4789-AB47-CA6C2DEBE5BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92DBDBAE-3D2E-4789-AB47-CA6C2DEBE5BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92DBDBAE-3D2E-4789-AB47-CA6C2DEBE5BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
