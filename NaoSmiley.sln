@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriFs.V2.Hook.Interfaces", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BGME.Framework.Interfaces", "Interfaces\BGME\BGME.Framework.Interfaces\BGME.Framework.Interfaces.csproj", "{3A714CD7-B133-49B1-8324-9ECA9BED5AB5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BF.File.Emulator.Interfaces", "Interfaces\FileEmulationFramework\Emulator\Interfaces\BF.File.Emulator.Interfaces\BF.File.Emulator.Interfaces.csproj", "{AC49B1F2-37EB-4676-9D7C-F3D610BB44F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BF.File.Emulator.Interfaces", "Interfaces\FileEmulationFramework\Emulator\Interfaces\BF.File.Emulator.Interfaces\BF.File.Emulator.Interfaces.csproj", "{0F88B5A2-5E91-40F3-9F4D-239E469D2A2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,10 @@ Global
 		{3A714CD7-B133-49B1-8324-9ECA9BED5AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A714CD7-B133-49B1-8324-9ECA9BED5AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A714CD7-B133-49B1-8324-9ECA9BED5AB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC49B1F2-37EB-4676-9D7C-F3D610BB44F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC49B1F2-37EB-4676-9D7C-F3D610BB44F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC49B1F2-37EB-4676-9D7C-F3D610BB44F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC49B1F2-37EB-4676-9D7C-F3D610BB44F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F88B5A2-5E91-40F3-9F4D-239E469D2A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F88B5A2-5E91-40F3-9F4D-239E469D2A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F88B5A2-5E91-40F3-9F4D-239E469D2A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F88B5A2-5E91-40F3-9F4D-239E469D2A2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

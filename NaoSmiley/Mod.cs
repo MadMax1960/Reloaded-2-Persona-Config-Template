@@ -58,14 +58,15 @@ namespace NaoSmiley
 			_owner = context.Owner;
 			_configuration = context.Configuration;
 			_modConfig = context.ModConfig;
-	
-	
+
+			var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId); // modDir variable for file emulation
+
 			// For more information about this template, please see
 			// https://reloaded-project.github.io/Reloaded-II/ModTemplate/
-	
+
 			// If you want to implement e.g. unload support in your mod,
 			// and some other neat features, override the methods in ModBase.
-	
+
 			// TODO: Implement some mod logic
 
 			// Define controllers and other variables, set warning messages
@@ -73,7 +74,7 @@ namespace NaoSmiley
 			var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
 			if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
 			{
-				_logger.WriteLine($"Something in CriFS shit its pants! Normal files will not load properly!", System.Drawing.Color.Red); // files that would go in P5REssentials/CPK will not load!
+				_logger.WriteLine($"Something in CriFS shit its pants! Normal files will not load properly!", System.Drawing.Color.Red);
 				return;
             }
 
@@ -97,8 +98,6 @@ namespace NaoSmiley
 				_logger.WriteLine($"Something in PAK Emulator shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
 				return;
             }
-
-            var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
 
 
             // Set configuration options - obviously you don't need all of these, pick and choose what you want!
