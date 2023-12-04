@@ -7,6 +7,10 @@ using CriFs.V2.Hook.Interfaces;
 using PAK.Stream.Emulator;
 using PAK.Stream.Emulator.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
+using BGME.Framework;
+using BGME.Framework.Interfaces;
+using BF.File.Emulator;
+using BF.File.Emulator.Interfaces;
 
 namespace NaoSmiley
 {
@@ -63,33 +67,71 @@ namespace NaoSmiley
 			// and some other neat features, override the methods in ModBase.
 	
 			// TODO: Implement some mod logic
+
+			// Define controllers and other variables, set warning messages
 	
 			var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
 			if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
 			{
-				_logger.WriteLine($"Something shit it's pants", System.Drawing.Color.Red);
+				_logger.WriteLine($"Something in CriFS shit its pants! Normal files will not load properly!", System.Drawing.Color.Red); // files that would go in P5REssentials/CPK will not load!
 				return;
-			}
-	
-			if (_configuration.Test1)
+            }
+
+            var PakEmulatorController = _modLoader.GetController<IPakEmulator>();
+            if (PakEmulatorController == null || !PakEmulatorController.TryGetTarget(out var _PakEmulator))
+            {
+                _logger.WriteLine($"Something in PAK Emulator shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
+                return;
+            }
+
+            var BfEmulatorController = _modLoader.GetController<IBfEmulator>();
+            if (BfEmulatorController == null || !BfEmulatorController.TryGetTarget(out var _BfEmulator))
+            {
+                _logger.WriteLine($"Something in BF Emulator shit its pants! Files requiring bf merging will not load properly!", System.Drawing.Color.Red);
+                return;
+            }
+
+            var BGMEController = _modLoader.GetController<IBgmeApi>();
+			if (BGMEController == null || !BGMEController.TryGetTarget(out var _BGME))
 			{
-				criFsApi.AddProbingPath("Test");
-			}
-	
-			var PakEmulatorController = _modLoader.GetController<IPakEmulator>();
-			if (PakEmulatorController == null || !PakEmulatorController.TryGetTarget(out var _PakEmulator))
-			{
-				_logger.WriteLine($"Something in pak emu shit it's pants", System.Drawing.Color.Red);
+				_logger.WriteLine($"Something in PAK Emulator shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
 				return;
-			}
-	
-			var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
-	
-			if (_configuration.Test1)
+            }
+
+            var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
+
+
+            // Set configuration options - obviously you don't need all of these, pick and choose what you want!
+
+            // criFS
+            if (_configuration.BoolExample)
 			{
-				_PakEmulator.AddDirectory(Path.Combine(modDir, "Test"));
+				criFsApi.AddProbingPath("CriFS"); // adds "CriFS\(any folder name here)\..." as a probing path for CriFS if BoolExample is set to true
 			}
-		}
+
+            if (_configuration.EnumExample == Config.TestEnum.Value1)
+            {
+                criFsApi.AddProbingPath("CriFS"); // adds "CriFS\(any folder name here)\..." as a probing path for CriFS if EnumExample is set to Value1
+            }
+
+            // PAK Emulator
+            if (_configuration.BoolExample)
+			{
+				_PakEmulator.AddDirectory(Path.Combine(modDir, "PakEmu")); // adds "PakEmu\..." as a probing path for BIN merging if config option is enabled
+            }
+
+            // BF Emulator
+            if (_configuration.BoolExample)
+            {
+                _BfEmulator.AddDirectory(Path.Combine(modDir, "BfEmu/BF")); // adds "PakEmu\BF\..." as a probing path for BF merging if config option is enabled
+            }
+
+            // BGME
+            if (_configuration.BoolExample)
+            {
+				_BGME.AddFolder(Path.Combine(modDir, "BGME_Config")); // adds "BGME_Config\..." as a probing path for BF merging if config option is enabled
+            }
+        }
 	
 		#region Standard Overrides
 	public override void ConfigurationUpdated(Config configuration)
