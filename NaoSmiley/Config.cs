@@ -41,7 +41,7 @@ namespace NaoSmiley.Configuration
         [DisplayName("Bool")]
 		[Description("Bool example")]
 		[DefaultValue(true)]
-		public bool BoolExample { get; set; } = true;
+		public bool BoolExample { get; set; } = true; // bool used in Mod.CS, not the folder name, but the bool name
 
         [Category("Category 2")]
         [DisplayName("Enum")]
