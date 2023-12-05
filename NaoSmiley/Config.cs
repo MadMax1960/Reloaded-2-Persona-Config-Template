@@ -29,25 +29,11 @@ namespace NaoSmiley.Configuration
             The `DefaultValue` attribute is used as part of the `Reset` button in Reloaded-Launcher.
         */
 
-		public enum TestEnum
-		{
-			Value1,
-			Value2,
-            Value3,
-            Value4,
-        }
-
-        [Category("Category 1")]
-        [DisplayName("Bool")]
+        [Category("Test")]
+        [DisplayName("Test")]
 		[Description("Bool example")]
 		[DefaultValue(true)]
-		public bool BoolExample { get; set; } = true; // bool used in Mod.CS, not the folder name, but the bool name
-
-        [Category("Category 2")]
-        [DisplayName("Enum")]
-        [Description("Enum example")]
-        [DefaultValue(TestEnum.Value1)]
-        public TestEnum EnumExample { get; set; } = TestEnum.Value1;
+		public bool Test1 { get; set; } = true; // bool used in Mod.CS, not the folder name, but the bool name
     }
 
     /// <summary>

@@ -100,35 +100,30 @@ namespace NaoSmiley
             }
 
 
-            // Set configuration options - obviously you don't need all of these, pick and choose what you want!
+            // Set configuration options - obviously you don't need all of these, pick and choose what you need!
 
             // criFS
-            if (_configuration.BoolExample)
+            if (_configuration.Test1)
 			{
-				criFsApi.AddProbingPath("CriFS"); // adds "CriFS\(any folder name here)\..." as a probing path for CriFS if BoolExample is set to true
+				criFsApi.AddProbingPath("Test"); // folder path. place a subfolder inside and then start your file path. for example: "(mod folder)\Test\(any name)\..."
 			}
 
-            if (_configuration.EnumExample == Config.TestEnum.Value1)
-            {
-                criFsApi.AddProbingPath("CriFS"); // adds "CriFS\(any folder name here)\..." as a probing path for CriFS if EnumExample is set to Value1
-            }
-
             // PAK Emulator
-            if (_configuration.BoolExample)
+            if (_configuration.Test1)
 			{
-				_PakEmulator.AddDirectory(Path.Combine(modDir, "PakEmu")); // adds "PakEmu\..." as a probing path for BIN merging if config option is enabled
+				_PakEmulator.AddDirectory(Path.Combine(modDir, "Test")); // folder path. immediately start your file path inside this folder. for example: "(mod folder)\Test\..."
             }
 
             // BF Emulator
-            if (_configuration.BoolExample)
+            if (_configuration.Test1)
             {
-                _BfEmulator.AddDirectory(Path.Combine(modDir, "BfEmu/BF")); // adds "PakEmu\BF\..." as a probing path for BF merging if config option is enabled
+                _BfEmulator.AddDirectory(Path.Combine(modDir, "Test")); // folder path. immediately start your file path inside this folder. for example: "(mod folder)\Test\..."
             }
 
             // BGME
-            if (_configuration.BoolExample)
+            if (_configuration.Test1)
             {
-				_BGME.AddFolder(Path.Combine(modDir, "BGME_Config")); // adds "BGME_Config\..." as a probing path for BF merging if config option is enabled
+				_BGME.AddFolder(Path.Combine(modDir, "Test")); // folder path. immediately start your file path inside this folder. for example: "(mod folder)\Test\..."
             }
         }
 	
