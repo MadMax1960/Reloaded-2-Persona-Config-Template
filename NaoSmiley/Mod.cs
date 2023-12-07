@@ -95,7 +95,7 @@ namespace NaoSmiley
             var BGMEController = _modLoader.GetController<IBgmeApi>();
 			if (BGMEController == null || !BGMEController.TryGetTarget(out var _BGME))
 			{
-				_logger.WriteLine($"Something in PAK Emulator shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
+				_logger.WriteLine($"Something in BGME shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
 				return;
             }
 
