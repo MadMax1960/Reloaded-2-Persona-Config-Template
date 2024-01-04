@@ -3,6 +3,7 @@ using Reloaded.Mod.Interfaces.Structs;
 using System.ComponentModel;
 using CriFs.V2.Hook;
 using CriFs.V2.Hook.Interfaces;
+using System.Reflection;
 
 namespace NaoSmiley.Configuration
 {
@@ -28,17 +29,17 @@ namespace NaoSmiley.Configuration
             The `DefaultValue` attribute is used as part of the `Reset` button in Reloaded-Launcher.
         */
 
-		[DisplayName("Test")]
-		[Description("Disable if you like breaking things!")]
+        [Category("Test")]
+        [DisplayName("Test")]
+		[Description("Bool example")]
 		[DefaultValue(true)]
 		public bool Test1 { get; set; } = true; // bool used in Mod.CS, not the folder name, but the bool name
+    }
 
-	}
-
-	/// <summary>
-	/// Allows you to override certain aspects of the configuration creation process (e.g. create multiple configurations).
-	/// Override elements in <see cref="ConfiguratorMixinBase"/> for finer control.
-	/// </summary>
+    /// <summary>
+    /// Allows you to override certain aspects of the configuration creation process (e.g. create multiple configurations).
+    /// Override elements in <see cref="ConfiguratorMixinBase"/> for finer control.
+    /// </summary>
 	public class ConfiguratorMixin : ConfiguratorMixinBase
 	{
 		// 

@@ -7,8 +7,10 @@ using CriFs.V2.Hook.Interfaces;
 using PAK.Stream.Emulator;
 using PAK.Stream.Emulator.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
-using SPD.File.Emulator.Interfaces;
-using SPD.File.Emulator;
+using BGME.Framework;
+using BGME.Framework.Interfaces;
+using BF.File.Emulator;
+using BF.File.Emulator.Interfaces;
 
 namespace NaoSmiley
 {
@@ -67,43 +69,63 @@ namespace NaoSmiley
 
 			// TODO: Implement some mod logic
 
-			var criFsController = _modLoader.GetController<ICriFsRedirectorApi>(); // grab emu
-			if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi)) // idr LMAO
+			// Define controllers and other variables, set warning messages
+	
+			var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
+			if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
 			{
-				_logger.WriteLine($"Something shit it's pants", System.Drawing.Color.Red);
+				_logger.WriteLine($"Something in CriFS shit its pants! Normal files will not load properly!", System.Drawing.Color.Red);
 				return;
-			}
-	
-			if (_configuration.Test1) // should be _configuration.(boolname)
+            }
+
+            var PakEmulatorController = _modLoader.GetController<IPakEmulator>();
+            if (PakEmulatorController == null || !PakEmulatorController.TryGetTarget(out var _PakEmulator))
+            {
+                _logger.WriteLine($"Something in PAK Emulator shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
+                return;
+            }
+
+            var BfEmulatorController = _modLoader.GetController<IBfEmulator>();
+            if (BfEmulatorController == null || !BfEmulatorController.TryGetTarget(out var _BfEmulator))
+            {
+                _logger.WriteLine($"Something in BF Emulator shit its pants! Files requiring bf merging will not load properly!", System.Drawing.Color.Red);
+                return;
+            }
+
+            var BGMEController = _modLoader.GetController<IBgmeApi>();
+			if (BGMEController == null || !BGMEController.TryGetTarget(out var _BGME))
 			{
-				criFsApi.AddProbingPath("Test"); // folder name
-			}
-	
-			var PakEmulatorController = _modLoader.GetController<IPakEmulator>(); // grab emu
-			if (PakEmulatorController == null || !PakEmulatorController.TryGetTarget(out var _PakEmulator)) // idr
-			{
-				_logger.WriteLine($"Something in pak emu shit it's pants", System.Drawing.Color.Red);
+				_logger.WriteLine($"Something in BGME shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
 				return;
-			}
-	
-			if (_configuration.Test1) // should be _configuration.(boolname)
+            }
+
+
+            // Set configuration options - obviously you don't need all of these, pick and choose what you need!
+
+            // criFS
+            if (_configuration.Test1)
 			{
-				_PakEmulator.AddDirectory(Path.Combine(modDir, "Test")); // folder name
+				criFsApi.AddProbingPath("Test"); // folder path. place a subfolder inside and then start your file path. for example: "(mod folder)\Test\(any name)\..."
 			}
 
-			var SPDEmulatorController = _modLoader.GetController<ISpdEmulator>(); // grab emu
-			if (SPDEmulatorController == null || !SPDEmulatorController.TryGetTarget(out var _SPDEmulator)) // idr
+            // PAK Emulator
+            if (_configuration.Test1)
 			{
-				_logger.WriteLine($"Something in spd emu shit it's pants", System.Drawing.Color.Red);
-				return;
-			}
+				_PakEmulator.AddDirectory(Path.Combine(modDir, "Test")); // folder path. immediately start your file path inside this folder. for example: "(mod folder)\Test\..."
+            }
 
+            // BF Emulator
+            if (_configuration.Test1)
+            {
+                _BfEmulator.AddDirectory(Path.Combine(modDir, "Test")); // folder path. immediately start your file path inside this folder. for example: "(mod folder)\Test\..."
+            }
 
-			if (_configuration.Test1) // should be _configuration.(boolname)
-			{
-				_PakEmulator.AddDirectory(Path.Combine(modDir, "Test")); // folder name 
-			}
-		}
+            // BGME
+            if (_configuration.Test1)
+            {
+				_BGME.AddFolder(Path.Combine(modDir, "Test")); // folder path. immediately start your file path inside this folder. for example: "(mod folder)\Test\..."
+            }
+        }
 	
 		#region Standard Overrides
 	public override void ConfigurationUpdated(Config configuration)
